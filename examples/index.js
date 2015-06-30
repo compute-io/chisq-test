@@ -31,7 +31,7 @@ Female 	250 		300 		50
 
 mat = matrix( new Int32Array([200,150,50,250,300,50]), [2,3] );
 
-// without Yates continuity correction
+// without Yates continuity correction (default behaviour)
 out = chisqTest( mat, {
 	'correct': false
 });
@@ -42,6 +42,6 @@ with Yates continuity correction,
 suggested when at least one cell of the table has an expected count < 5
 */
 out = chisqTest( mat, {
-	'correct': false
+	'correct': true
 });
 console.log( out.toString() );

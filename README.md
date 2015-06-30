@@ -20,7 +20,7 @@ var chisqTest = require( 'compute-chisq-test' );
 ```
 
 #### chisqTest( x[, opts] )
-This function is used to compute a goodness-of-fit test when `x` is an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) or [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), treating it as a vector of observed frequencies. When `x` is a [`matrix`](https://github.com/dstructs/matrix), it is assumed to be a contingency table of observed frequencies, and a two-way chi-square test](https://en.wikipedia.org/wiki/Pearson%27s_chi-squared_test) for independence is computed.
+This function is used to compute a goodness-of-fit test when `x` is an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) or [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), treating it as a vector of observed frequencies. When `x` is a [`matrix`](https://github.com/dstructs/matrix), it is assumed to be a contingency table of observed frequencies, and a two-way [chi-square test](https://en.wikipedia.org/wiki/Pearson%27s_chi-squared_test) for independence is computed.
 
 The functions returns an [`object`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object) holding the `pValue` of the test, the calculated test statistic `T` and the degrees of freedom of the test (`df`).
 
@@ -72,6 +72,29 @@ chisqTest( counts, {
 */
 ```
 
+The `probs` option argument has to be a `probability array`, i.e. an array of non-negative values which sum to one.
+
+To use [Yates' continuity correction](https://en.wikipedia.org/wiki/Yates%s_correction_for_continuity) in the [chi-square test](https://en.wikipedia.org/wiki/Pearson%27s_chi-squared_test) of independence, set the `correct` option to `true`:
+
+```javascript
+mat = matrix( new Int32Array([4,7,4,4]), [2,2] );
+
+out = chisqTest( mat )
+/*
+{ T: 0.3533
+  df: 1,
+  pValue: 0.5522 }
+*/
+out = chisqTest( mat, {
+	'correct': true
+});
+/*
+{ T: 0.0153,
+  df: 1,
+  pValue: 0.9014 }
+*/
+```
+
 ## Examples
 
 ``` javascript
@@ -115,7 +138,7 @@ with Yates continuity correction,
 suggested when at least one cell of the table has an expected count < 5
 */
 out = chisqTest( mat, {
-	'correct': false
+	'correct': true
 });
 ```
 
