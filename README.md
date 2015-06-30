@@ -58,7 +58,7 @@ out = chisqTest( mat );
 
 The returned object comes with a `.toString()` method which when invoked will print a formatted output of the results of the hypothesis test. 
 
-```
+``` javascript
 mat = matrix( new Int32Array([200,150,50,250,300,50]), [2,3] );
 console.log( chisqTest( mat ).toString() );
 /*
