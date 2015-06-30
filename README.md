@@ -56,6 +56,20 @@ out = chisqTest( mat );
 */
 ```
 
+The returned object comes with a `.toString()` method which when invoked will print a formatted output of the results of the hypothesis test. 
+
+```
+mat = matrix( new Int32Array([200,150,50,250,300,50]), [2,3] );
+console.log( chisqTest( mat ).toString() );
+/*
+Two-way chi-square test for marginal independence.
+	null hypothesis: there is no association between the variables.
+	test statistic: 16.2037
+	df: 2
+	p-value: 0.0003
+*/
+```
+
 By default, in the `array` case it is assumed that the assumed theoretical distribution is uniform over the categories. To supply any discrete distribution, use the `probs` option:
 
 ```javascript
