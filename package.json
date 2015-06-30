@@ -1,7 +1,7 @@
 {
   "name": "compute-chisq-test",
   "version": "0.0.0",
-  "description": "Computes Pearson's chi-square test ",
+  "description": "Computes a one-way or two-way chi-square test ",
   "author": {
     "name": "Philipp Burckhardt",
     "email": "pburckhardt@outlook.com"
@@ -25,19 +25,27 @@
   "keywords": [
     "compute.io",
     "compute",
-    "computation"
+    "computation",
+    "hypothesis testing",
+    "statistics",
+    "stats",
+    "independence",
+    "goodness-of-fit"
   ],
   "bugs": {
     "url": "https://github.com/compute-io/chisq-test/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "validate.io-array-like": "^1.0.1",
+    "validate.io-number-primitive-array": "^1.0.0"
+  },
   "devDependencies": {
-    "chai": "2.x.x",
+    "chai": "3.x.x",
     "mocha": "2.x.x",
     "coveralls": "^2.11.1",
     "istanbul": "^0.3.0",
     "jshint": "2.x.x",
-    "jshint-stylish": "^1.0.0"
+    "jshint-stylish": "2.x.x"
   },
   "license": "MIT"
 }
